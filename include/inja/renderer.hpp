@@ -587,6 +587,7 @@ class Renderer : public NodeVisitor {
 
   void visit(const BlockStatementNode& node) {
     const size_t old_level = current_level;
+    const Template* old_template = current_template;
     current_level = 0;
     current_template = template_stack.front();
     const auto block_it = current_template->block_storage.find(node.name);
@@ -596,7 +597,7 @@ class Renderer : public NodeVisitor {
       block_statement_stack.pop_back();
     }
     current_level = old_level;
-    current_template = template_stack.back();
+    current_template = old_template;
   }
 
   void visit(const SetStatementNode& node) {
