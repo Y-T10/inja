@@ -8,5 +8,6 @@ build-*
 doc/html
 doc/latex
 examples
+single_include
 
 __pycache__
